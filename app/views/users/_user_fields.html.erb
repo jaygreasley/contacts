@@ -1,0 +1,11 @@
+
+
+
+<p><%= f.label :email %>:<%= f.text_field :email %></p>
+
+<p><%= f.label :company %>:<%= f.text_field :company %></p>
+ 
+<p><%= f.label :role %>
+	
+	<%= habtm_checkboxes(@user, :role_ids, @accessible_roles, :name)  %>
+	</p>

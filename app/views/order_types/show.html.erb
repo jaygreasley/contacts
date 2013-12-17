@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %>
+  <b>Name:</b>
+  <%= @order_type.name %>
+</p>
+
+<h3>Existing order types</h3>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @order_types.each do |order_type| %>
+  <tr>
+    <td><%= order_type.name %></td>
+    <td><%= link_to 'Show', order_type %></td>
+    <td><%= link_to 'Edit', edit_order_type_path(order_type) %></td>
+    <td><%= link_to 'Destroy', order_type, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to 'Edit', edit_order_type_path(@order_type) %> |
+<%= link_to 'Back', order_types_path %>

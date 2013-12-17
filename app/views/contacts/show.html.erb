@@ -1,0 +1,25 @@
+<div id="LeadCreated">
+<h3 id="notice"><%= notice %></h3>  
+<% if @contact.errors.any? %>
+  <ul>
+    <% @contact.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+  
+  <p>Title: <%= @contact.Title %></p>
+  <p>Firstname: <%= @contact.Firstname %></p>
+  <p>Surname: <%= @contact.Surname %></p>
+  <p>Phone: <%= @contact.PhoneNumber %></p>
+  <p>Postcode: <%= @contact.Postcode %></p>
+  <p>Debt: <%= @contact.DebtAmount %></p>
+  <p>Status: <%= @contact.lead_status.name %></p>
+  
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>
+
+
+</div>

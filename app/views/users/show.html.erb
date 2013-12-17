@@ -1,0 +1,18 @@
+<h3><%= @user.email %></h3>
+ 
+<%= link_to_if(can?(:update,@user), "Edit", edit_user_path(@user)) %> |
+<%= link_to_if(can?(:delete, @user), "Delete", user_path(@user), :confirm => "Are you sure?", :method => :delete) {} %>
+ 
+<table class="one-column-emphasis">
+	<tbody>
+		<tr>
+			<td class="oce-first">Email:</td>
+			<td><%= @user.email %></td>
+		</tr>
+		<tr>
+			<td class="oce-first">Role:</td>
+			<td><%= @user.roles.first.name %></td>
+		</tr>
+	
+	</tbody>
+</table>

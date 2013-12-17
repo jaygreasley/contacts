@@ -1,0 +1,35 @@
+<h4>Add an order:</h4>
+<%= form_for(@order) do |f| %>
+  <div class="field">
+    <%= f.label :company %><br />
+    <%= f.text_field :company %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%=  collection_select(:order, :status, OrderStatus.all, :name, :name , options ={:prompt => "Status", :selected => @order.status} ) %> 
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br />
+    <%= f.text_field :quantity %>
+  </div>
+  <div class="field">
+	<%= f.label :Invoice_number %><br />
+	<%= f.text_field :Invoice_number %>
+  </div>
+  <div class="field">
+    <%= f.label :Description %><br />
+    <%= f.text_area :Description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :type %><br />
+    
+  	<%= collection_select(:order_type, :id, @ordertypes, :id, :name, options ={:prompt => "-Select a type"}, :class =>"order_type") %>
+
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

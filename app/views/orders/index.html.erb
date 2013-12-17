@@ -1,0 +1,47 @@
+<h4>Order list</h4>
+
+<table>
+  <tr>
+    <th>Invoice number</th>
+    <th>Company name</th>
+    <th>Order type</th>
+    <th>Quantity</th>
+    <th>Status</th>
+	<th>Delivered</th>
+	<th>Remaining</th>
+	<th>Delivered today </th>
+	<th>Rejections </th>
+    <th>	Cutoffs </th>
+	<th>Edit order</th>
+	<th>Leads for this order</th>
+  </tr>
+
+<% @orders.each do |order| %>
+	
+  <tr>
+    <td><%= order.Invoice_number %></td>
+    <td><%= order.company %></td>
+    <td><%= order.order_type.name %></td> 
+	<td><%= order.quantity %></td>
+    <td><%= order.status %></td>
+    <td><%= order.delivered %></td>
+    <td><%= order.remaining %></td>
+    <td><%= order.delivered_today %></td>
+    <td><%= link_to order.rejections , '/contacts/showbystatus?status_id=2&order_id=' + order.id.to_s  %></td>
+    <td><%= link_to order.cutoffs , '/contacts/showbystatus?status_id=5&order_id=' + order.id.to_s  %></td>
+
+	<% if can? :update, order %>
+		<td><%= link_to 'Edit', edit_order_path(order) %></td>
+	<% else %><td></td>
+	<% end %>
+	<td><%= link_to 'Click here', '/contacts/showbyorder?id=' + order.id.to_s %></td> 
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Order', new_order_path %>
+
+

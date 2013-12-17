@@ -1,0 +1,39 @@
+<h4>Your orders</h4>
+
+<table>
+  <tr>
+    <tr>
+    <th>Order ID</th>
+    <th>Company name</th>
+    <th>Order type</th>
+    <th>Quantity</th>
+    <th>Status</th>
+	<th>Delivered</th>
+	<th>Remaining</th>
+	<th>Delivered today </th>
+	<th>Rejections </th>
+    <th>	Cutoffs </th>
+	<th>Leads for this order</th>
+  </tr>
+  </tr>
+
+<% @orders.each do |order| %>
+	
+ <tr>
+    <td><%= order.id %></td>
+    <td><%= order.company %></td>
+    <td><%= order.order_type.name %></td> 
+	<td><%= order.quantity %></td>
+    <td><%= order.status %></td>
+    <td><%= order.delivered %></td>
+    <td><%= order.remaining %></td>
+    <td><%= order.delivered_today %></td>
+    <td><%= link_to order.rejections , '/contacts/showbystatus?id=2'  %></td>
+    <td><%= link_to order.cutoffs , '/contacts/showbystatus?id=5'  %></td>
+	<td><%= link_to 'Click here', '/contacts/showbyorder?id=' + order.id.to_s %></td> 
+
+  </tr>
+<% end %>
+</table>
+
+<br />

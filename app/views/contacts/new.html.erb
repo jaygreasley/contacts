@@ -1,0 +1,314 @@
+
+<%= form_for(@contact) do |f| %>
+
+
+
+<div id="Personal_details">
+<h4 id="notice"><%= notice %></h4>  
+
+  <h4>Personal Details</h4>
+
+
+	<div class="field">
+    <%= f.label :surname %>
+    <%= f.text_field :Surname %>
+    </div>
+
+	<div class="field">
+	    <%= f.label :firstname %>
+	    <%= f.text_field :Firstname %>
+	</div>
+	<div class="field">
+	    <%= f.label :title %>
+	    <%=  collection_select(:contact, :Title, Title.all, :name , :name , options ={:prompt => "Select a title"} ) %>
+		
+	</div>
+		
+	<div class="field">
+    <%= f.label :age %>
+    <%= f.text_field :Age %>
+    </div>
+	<div class="field">
+    <%= f.label :phonenumber %>
+    <%= f.text_field :PhoneNumber %>
+    </div>
+	<div class="field">
+    <%= f.label :doornumber %>
+    <%= f.text_field :DoorNumber %>
+    </div>
+	<div class="field">
+    <%= f.label :street %>
+    <%= f.text_field :Street %>
+    </div>
+	<div class="field">
+    <%= f.label :postcode %>
+    <%= f.text_field :Postcode %>
+    </div>
+
+    
+</div>
+  
+<div id="Debt_details">
+
+	<h4>Debt Details</h4>
+ 	<div class="field">
+    <%= f.label :debt_amount, "Amount of debt" %>
+    <%= f.text_field :DebtAmount %>
+  	</div>
+  	<div class="field">
+    <%= f.label :paying_per_month %>
+    <%= f.text_field :PayingPerMonth %>
+  	</div>
+
+  	<div class="field">
+    <%= f.label :Total_creditors %>
+    <%= f.text_field :TotalCreditors %>
+  	</div>
+
+
+  <div class="field">
+    <%= f.label :Creditor_1_name %>
+    <%= f.text_field :Creditor1Name %>
+  </div>
+  <div class="field">
+    <%= f.label :Creditor_1_debt %>
+    <%= f.text_field :Creditor1Debt %>
+  </div>
+  <div class="field">
+    <%= f.label :Creditor_2_name %>
+    <%= f.text_field :Creditor2Name %>
+  </div>
+  <div class="field">
+    <%= f.label :Creditor_2_debt %>
+    <%= f.text_field :Creditor2Debt %>
+  </div>
+  <div class="field">
+    <%= f.label :Creditor_3_name %>
+    <%= f.text_field :Creditor3Name %>
+  </div>
+  <div class="field">
+    <%= f.label :Creditor_3_debt %>
+    <%= f.text_field :Creditor3Debt %>
+  </div>
+  <div class="field">
+    <%= f.label :In_a_debt_plan %>
+    <%= f.check_box :InAdebtPlan %>
+  </div>
+  <div class="field">
+    <%= f.label :Debt_plan_company %>
+    <%= f.text_field :DebtPlanCompany %>
+  </div>
+
+ 
+</div>
+
+<div id="Property_details">
+
+	  <h4>Property Details</h4>
+
+		<div class="field">
+	    <%= f.label :PropertyValue, "Property value" %>
+	    <%= f.text_field :PropertyValue %>
+	    </div>
+
+		<div class="field">
+		    <%= f.label :Outstanding_Mortgage %>
+		    <%= f.text_field :OutstandingMortgage %>
+		</div>
+		<div class="field">
+		    <%= f.label :Outstanding_Secured %>
+		    <%= f.text_field :OutstandingSecured %>
+		</div>
+
+	  
+</div>
+	
+<div id="Living_Status">
+
+	  <h4>Living Status</h4>
+
+		<div class="field">
+	    <%= f.label :Employment, "Employment" %>
+	    <%=  collection_select(:contact, :Employment, EmploymentType.all, :name, :name , options ={:prompt => "Select one"} ) %>
+	    </div>
+
+		<div class="field">
+		    <%= f.label :incomePCM, "Monthly Income" %>
+		    <%= f.text_field :incomePCM %>
+		</div>
+		<div class="field">
+		    <%= f.label :RentOrMortgage, "Rent or mortgage" %>
+		    <%= f.text_field :RentOrMortgage %>
+		</div>
+
+		<div class="field">
+	    <%= f.label :Gas %>
+	    <%= f.text_field :Gas %>
+	  	</div>
+
+		<div class="field">
+	    <%= f.label :Electric %>
+	    <%= f.text_field :Electric %>
+	  	</div>
+
+		<div class="field">
+	    <%= f.label :Water %>
+	    <%= f.text_field :Water %>
+	  	</div>
+
+		<div class="field">
+	    <%= f.label :CouncilTax, "Council tax" %>
+	    <%= f.text_field :CouncilTax %>
+	  	</div>
+
+		<div class="field">
+	    <%= f.label :Other %>
+	    <%= f.text_field :Other %>
+	  	</div>
+
+		<div class="field">
+	    <%= f.label :MDI %>
+	    <%= f.text_field :MDI %>
+	  	</div>
+	
+
+	  
+</div>
+  
+<div id="Agent_Recap">
+	  <h4>Agent Recap</h4>
+
+		<div class="field">
+	    <%= f.label :CustomerConfirmedAsStruggling, "Confirmed struggling" %>
+	    <%= f.check_box :CustomerConfirmedAsStruggling %>
+	    </div>
+
+		<div class="field">
+		    <%= f.label :AgentCompletedRecap, "Completed recap" %>
+		    <%= f.check_box :AgentCompletedRecap %>
+		</div>
+		<div class="field">
+		    <%= f.label :AgentName, "Your name" %>
+			<input type="text" id="contact_AgentName" name="contact[AgentName]" value="<%= current_user.username %>">
+		</div>
+
+		<div class="field">
+		    <%= f.label :order_type_id %>      
+		    <%=  collection_select(:contact, :order_type_id, OrderType.all, :id, :name , options ={:prompt => "Select a Lead type"} ) %>
+		</div> 
+
+		<% if can? :read, Order %>
+		
+		<div class="field">
+		    <%= f.label :order_id %>
+		    <%= collection_select(:contact, :order_id, Order.all, :id, :company, options ={:prompt => "Select an order"}) %>
+		</div>
+	
+        	<% end %> 
+	
+		<div class="field">
+			
+			<%= f.label "Criteria" %>
+			<textarea  id="criteria" name="criteria" value="test" cols="40" rows="8"></textarea>
+		</div>
+		<br />
+		<%= f.submit "Add Lead" %>
+	
+</div>
+
+<% end %>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("select#contact_order_type_id").change(function(){
+            var id_value_string = $(this).val();
+		               
+			$('#criteria').val('');
+			
+            if (id_value_string == "") { 
+                // if the id is empty remove all the sub_selection options from being selectable and do not do any ajax
+                $("select#contact_order_id option").remove();
+                var row = "<option value=\"" + "" + "\">" + "" + "</option>";
+                $(row).appendTo("select#contact_order_id");
+			                   
+            }
+            else {
+	
+			
+                // Send the request and update sub category dropdown 
+                $.ajax({
+                    dataType: "json",
+                    cache: false,
+                    url: '/orders/for_order_types/' + id_value_string,
+                    timeout: 2000,
+                    error: function(XMLHttpRequest, errorTextStatus, error){
+                        alert("No orders available or an error occured ");
+						 // Clear all options from sub category select 
+				            $("select#contact_order_id option").remove();
+                    },
+                    success: function(data){  
+	                  	
+                        // Clear all options from sub category select 
+			            $("select#contact_order_id option").remove();
+						
+                        //put in a empty default line
+                        var row = "<option value=\"" + "" + "\">" + "" + "</option>";
+                        $(row).appendTo("select#contact_order_id");  
+						                      
+                        // Fill sub category select 
+                        $.each(data, function(i, j){
+                            row = "<option value=\"" + j.order.id + "\">" + j.order.company + "</option>";   
+                            $(row).appendTo("select#contact_order_id"); 
+							            
+                        }); 
+						                    
+                     }
+                });
+            };
+        });
+
+		$("select#contact_order_id").change(function(){
+            var id_value_string = $(this).val();
+				$('#criteria').val('');
+				if (id_value_string == "") { 
+	                // if the id is empty remove all the sub_selection options from being selectable and do not do any ajax
+	                $("select#contact_order_id option").remove();
+	                var row = "<option value=\"" + "" + "\">" + "" + "</option>";
+	                $(row).appendTo("select#contact_order_id");
+					
+	            }
+				else
+				{
+                // Send the request and update sub category dropdown 
+                $.ajax({
+                    dataType: "json",
+                    cache: false,
+                    url: '/orders/get_criteria_for/' + id_value_string,
+                    timeout: 2000,
+                    error: function(XMLHttpRequest, errorTextStatus, error){
+                        alert("No orders available or an error occured ");
+                    },
+                    success: function(data){  
+	                  	
+                        // Clear all options from sub category select 
+                        //$("select#contact_order_id option").remove();
+                        //put in a empty default line
+                        //var row = "<option value=\"" + "" + "\">" + "" + "</option>";
+                        //$(row).appendTo("select#contact_order_id");                        
+                        // Fill sub category select 
+                        $.each(data, function(i, j){
+                        //    row = "<option value=\"" + j.order.id + "\">" + j.order.company + "</option>";   
+                           
+                    		$('#criteria').val(j.order.Description); 
+                        });             
+                     }
+				
+                });
+            }
+        });
+
+
+
+    });
+</script>

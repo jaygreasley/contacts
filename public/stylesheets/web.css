@@ -1,0 +1,235 @@
+#wrapper{
+	
+	width: 99%;
+}
+
+h1 {
+
+	color: #c4ddee;
+	font-size: 36px;
+
+}
+
+h2 {
+
+	color: #a1ca00;
+	font-size:12px;
+	text-align: right;
+	margin: -18px 8px 0px 0px;
+
+}
+
+h3 {
+
+	color: #fff;
+	font-size: 14px;
+
+}
+
+h4 {
+
+	color: #c4ddee;
+	font-size: 16px;
+
+}
+
+
+header {
+	
+	position: relative;
+	top: 20px;
+	width: 220px;
+	left: 60px;
+	
+}
+
+header a h2 {
+	width: 220px;
+	color: #a1ca00;
+	font-size:12px;
+	text-align: right;
+	margin: -18px 8px 0px 0px;
+
+}
+
+header a {
+	
+color: #c4ddee;
+font-size: 36px;
+text-decoration: none;	
+
+}
+
+#navigation {
+	
+	position: relative;
+	top: 30px;
+	left: 60px;
+	color: #fff;
+	height: 50px;
+	
+}
+#navigation li {
+	display: inline;
+}
+
+#navigation .navItem {
+	margin: 10px;
+}
+
+#navigation .navItem a{
+	position: relative;
+	top: 10px;
+	left: 10px;
+	font-size: 18px;
+	color: #c4ddee;
+	text-decoration: none;
+	
+}
+
+#navigation .navCurrent a{
+	position: relative;
+	top: 10px;
+	left: 10px;
+	font-size: 20px;
+	color: #c4ddee;
+	text-decoration: none;
+	
+}
+
+#navigation .navItem a:hover {  color:#a1ca00; background-color: #fff; }
+
+#login {
+
+	position: relative;
+	top: 0px;
+	left: 70%;
+	width: 29%;
+}
+
+#login h1{
+
+color: #fff;
+font-size: 24px;
+}
+
+#content {
+
+	position: relative;
+	left: 5%;
+	width: 90%;
+}
+
+#Leads {
+	
+	position: relative;
+	top: 90px;
+	left: 0px;
+
+}
+#errors {
+	
+	
+	position: absolute;
+	top: 0px;
+	left: 10px;
+	width: 400px;
+}
+
+#Personal_details {
+	
+	
+	position: absolute;
+	top: 0px;
+	left: 10px;
+	width: 400px;
+}
+
+#Personal_details label {
+
+	width: 8em;
+	float: left;
+	text-align: right;
+	margin-right: 0.5em;
+	display: block
+	
+}
+
+#Debt_details {
+  	
+	position: absolute;
+	top: 0px;
+	left: 420px;
+	width: 400px;
+
+}
+
+#Debt_details label {
+	
+	width: 12em;
+	float: left;
+	text-align: right;
+	margin-right: 0.5em;
+	display: block
+
+}
+
+#Property_details {
+  	
+	position: absolute;
+	top: 400px;
+	left: 420px;
+	width: 400px;
+
+}
+
+#Property_details label {
+	
+	width: 12em;
+	float: left;
+	text-align: right;
+	margin-right: 0.5em;
+	display: block
+
+}
+
+#Living_Status {
+  	
+	position: absolute;
+	top: 330px;
+	left: 10px;
+	width: 400px;
+
+}
+
+#Living_Status label {
+	
+	width: 8em;
+	float: left;
+	text-align: right;
+	margin-right: 0.5em;
+	display: block
+
+}
+
+#Agent_Recap {
+  	
+	position: absolute;
+	top: 570px;
+	left: 420px;
+	width: 400px;
+
+}
+
+#Agent_Recap label {
+	
+	width: 12em;
+	float: left;
+	text-align: right;
+	margin-right: 0.5em;
+	display: block
+
+}
+
+
+

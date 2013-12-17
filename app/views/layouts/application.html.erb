@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clm</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "rails", "application.js" %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<div id="wrapper">
+	<header> 
+		<a href="/home/index"> 
+			<h1>crystal logix</h1> 
+			<h2>fresh communications</h2> 
+		</a> 
+	</header> 
+
+
+	<navigation>
+	<ul id="navigation">
+			<% if can? :manage, OrderType %>
+				<li  class="navItem"><a href="/order_types">Order types</a></li>
+			<% end %>
+			<% if can? :read, Order %>
+				<li class="navItem"><a href="/orders/showmy">My Orders</a></li>
+			<% end %>
+			<% if can? :manage, Order %>
+				<li class="navItem"><a href="/orders">All Orders</a></li>
+			<% end %>
+			<% if can? :manage, Contact %>
+				<li class="navItem"><a href="/contacts">Leads</a> </li>
+			<% end %>
+			
+			<% if can? :create, Contact %>
+				<li class="navItem"><a href="/contacts/new">New Lead</a></li>	
+                <li class="navItem"><a href="/contacts/todays">Todays leads</a></li>	
+			<% end %>
+			<% if can? :manage, User %>
+				<li class="navItem"><a href="/users">Users</a></li>
+			<% end %>
+			<% if can? :manage, Agent %>
+				<li class="navItem"><a href="/agents">Agents</a></li>
+			<% end %>
+
+	</ul> 
+	</navigation>
+	
+	 <div id="login"> 
+	<% if user_signed_in? %>
+		<p> 
+		Signed in as <%= current_user.email %> of <%= current_user.company %>. 
+		<a href="/users/sign_out">Sign out</a> 
+
+		</p>
+	<% else %>
+		<a href="/users/sign_in">Sign in</a> 
+	<% end%> 
+	</div>
+	
+	<div id="content">	
+		<%= yield %>
+	</div>
+	
+
+ 
+</div> 
+ 
+ 
+</body> 
+</html>

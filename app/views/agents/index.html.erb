@@ -1,0 +1,36 @@
+<h4>Listing agents</h4>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Extension</th>
+    <th>MouseClaimsID</th>
+    <th>MouseClaimsPwd</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @agents.each do |agent| %>
+  <tr>
+    <td><%= agent.name %></td>
+    <td><%= agent.extension %></td>
+    <td><%= agent.mouseClaimsID %></td>
+    <td><%= agent.mouseClaimsPwd %></td>
+    <td><%= link_to 'Show', agent %></td>
+    <td><%= link_to_if(can?(:edit, Agent), "edit", edit_agent_path(agent)) {} %></td>
+    <% if can? :manage, Agent %>
+		<td><%= link_to 'Destroy', agent, :confirm => 'Are you sure?', :method => :delete  %></td>
+	<% else %>
+		<td></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
+
+<%= link_to_if(can?(:edit, Agent), "new", new_agent_path()) {} %>
+

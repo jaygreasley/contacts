@@ -1,0 +1,48 @@
+<h4>Edit lead:</h4>
+<%= form_for(@contact) do |f| %>
+<% if @contact.errors.any? %>
+  <ul>
+    <% @contact.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+  <div class="field">
+    <%= f.label :PhoneNumber %><br />
+    <%= f.text_field :PhoneNumber %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= collection_select(:lead_status, :id, LeadStatus.all, :id, :name , options ={:prompt => "Change status", :selected => @contact.lead_status.id}, :class =>"lead_status") %>
+  </div>
+
+    <div class="field">
+        <%= f.label :NewNotes, "New note" %><br />
+        <%= f.text_area(:NewNotes, :size => "60x5") %>
+    </div>
+ 
+    <div class="field">
+        <%= f.label :Notes, "Previous notes" %><br />
+        <%= f.text_area(:Notes, :disabled => "disabled", :size => "60x15") %>
+    </div>
+
+    <% if can? :update, :Order %>
+		
+		<div class="field">
+		    <%= f.label :order_id %>
+		    <%= collection_select(:contact, :order_id, Order.all, :id, :displayname, options ={:prompt => "Select an order"}) %>
+		</div>
+	
+        	<% end %> 
+	</div>
+ 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+ 
